@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Score Card</title>
+  <meta charset="UTF-8">
+  <style>
+    .name {
+        padding-left:15px;
+    }
+    #word1 {
+       font-size:120px;
+    }
+    .red { color:red }
+    .blue { color:blue }
+    td:hover {
+       background:lightgray;
+    }
+    .score, .red, .blue {
+       text-align:center;
+    }
+    header {
+       padding: 10px;
+       margin-bottom: 10px;
+       text-align:center;
+       font-size: 40px;
+       color: white;
+       background: Olive;
+    }
+    tr {
+       height:45px;
+       font-size: 25px;
+       border: 0 0 2px 0;
+    }
+    .up {
+       color: white;
+       background: blue;
+       border-radius: 12px;
+    }
+   .down {
+       color: white;
+       background: orange;
+       border-radius: 12px;
+    }
+   .reset {
+       color: red;
+       border-radius: 12px;
+    }
+
+    .button:hover {
+      a-cursor: pointer;
+      cursor: progress;
+      background: red;
+    }
+    td {
+      background: white;
+      color: blue;
+    }
+  </style>
+
+</head>
+
+  <body onload="focus()" bgcolor=Gainsboro >
+    <header>S C O R E B O A R D</header>
+    <img src='logo.png' width=600 height=80></img>
+    <table bgcolor=LightSteelBlue width=600 id="names">
+    </table>
+
+    <input onkeydown="search(this)" type="text" id="name" > <button onclick="addItem()">Add</button>
+
+    <script>
+      var nItems = 1;
+      function reset(id) {
+          clearMessages();
+          v = parseInt(document.getElementById(id).innerHTML);
+          if(v == 0) return;
+          document.getElementById(id).className = 'blue';
+          document.getElementById(id).innerHTML = 0;
+          document.getElementById(id + '.1').innerHTML = 'Reset:' + v;
+      }
+
+      function add(id, n) {
+          clearMessages();
+          var e = document.getElementById(id);
+          var v = parseInt(e.innerHTML) + n;
+          cls = (v < 0) ? 'red' : 'blue';
+          e.className = cls;
+          e.innerHTML = v;
+          act = (n > 0) ? 'Added': 'Subtracted';
+          document.getElementById(id + '.1').innerHTML = act;
+      }
+      function clearMessages() {
+          for(var i = 1; i < nItems; i++) {
+              document.getElementById(i + '.1').innerHTML = '';
+          } 
+      }
+      function focus() {
+        document.getElementById('name').focus();
+      }
+      function initCap(str) {
+            return str[0].toUpperCase() + str.substring(1).toLowerCase();
+      }
+
+      function addItem() {
+        var ve = document.getElementById('name');
+        var v1 = ve.value;
+        ve.value = '';
+        ve.focus();
+        var names = v1.split(',');
+
+        for(var i = 0; i < names.length; i++) {
+            var v = names[i];
+            if(!v)continue;
+            var table = document.getElementById("names");
+            //var row = table.insertRow(0);
+            var row = table.insertRow(table.rows.length);
+
+            var cell0 = row.insertCell(0);
+            cell0.style.width = '15%'
+            cell0.className = 'name';
+            cell0.innerHTML = initCap(v);
+
+            var cell1 = row.insertCell(1);
+            cell1.style.width = '8%'
+            cell1.innerHTML = 0;
+            cell1.className = 'score';
+            cell1.setAttribute('id', nItems);
+
+            var cell2 = row.insertCell(2);
+            cell2.style.width = '15%'
+
+            var cell3 = row.insertCell(3);
+
+            cell2.className = 'score';
+            cell2.innerHTML = `
+                <button onclick="add(${nItems}, 1)" type=button>
+                    <img src=plus.png width=25 height=25></img> </button>
+                <button onclick="add(${nItems}, -1)" type=button>
+                    <img src=minus.jpg width=25 height=25></img> </button>
+                <button class=reset onclick="reset(${nItems})" type=button>
+                    <img src=reset.jpg width=25 height=25></img> </button>
+                `
+                ;
+
+            cell3.style.width = '20%'
+            cell3.setAttribute('id', nItems + '.1');
+            nItems++;
+        }
+      }
+      function search(ele) {
+        if(event.key === 'Enter') addItem();
+      }
+    </script>
+  </body>
+</html>
