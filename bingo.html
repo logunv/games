@@ -192,6 +192,12 @@
         background-color: #fef08a;
         font-weight: bold;
     }
+    .bingo-footer {
+        text-align: center;
+        font-size: 22px;
+        margin-top: 20px;
+        font-weight: bold;
+    }
 
     /* Print styles */
     @media print {
@@ -364,6 +370,11 @@
                 }
 
                 card.appendChild(grid);
+                const footer = document.createElement('div');
+                footer.className = 'bingo-footer';
+                footer.textContent = 'TamilED Games';
+                card.appendChild(footer);
+                
                 container.appendChild(card);
             }
         }
