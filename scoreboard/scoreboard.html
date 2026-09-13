@@ -64,13 +64,14 @@
     <header>S C O R E B O A R D</header>
     <img src='logo.png' width=600 height=80></img>
     <h2>Players:</h2>
-    <table bgcolor=LightSteelBlue width=600 id="names">
+    <table bgcolor=LightSteelBlue width=900 id="names">
     </table>
 
     <input onkeydown="search(this)" type="text" id="name" > <button onclick="addItem()">Add</button>
 
     <script>
       var nItems = 1;
+      let players = 0;
       function reset(id) {
           clearMessages();
           v = parseInt(document.getElementById(id).innerHTML);
@@ -113,24 +114,28 @@
             var v = names[i];
             if(!v)continue;
             var table = document.getElementById("names");
-            //var row = table.insertRow(0);
             var row = table.insertRow(table.rows.length);
 
-            var cell0 = row.insertCell(0);
+            var cellId = row.insertCell(0);
+            cellId.style.width = '6%'
+            cellId.className = 'name';
+            cellId.innerHTML = ++players;
+
+            var cell0 = row.insertCell(1);
             cell0.style.width = '15%'
             cell0.className = 'name';
             cell0.innerHTML = initCap(v);
 
-            var cell1 = row.insertCell(1);
+            var cell1 = row.insertCell(2);
             cell1.style.width = '8%'
             cell1.innerHTML = 0;
             cell1.className = 'score';
             cell1.setAttribute('id', nItems);
 
-            var cell2 = row.insertCell(2);
+            var cell2 = row.insertCell(3);
             cell2.style.width = '15%'
 
-            var cell3 = row.insertCell(3);
+            var cell3 = row.insertCell(4);
 
             cell2.className = 'score';
             cell2.innerHTML = `
