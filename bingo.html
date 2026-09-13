@@ -254,7 +254,7 @@
 
             <div class="form-group">
                 <label for="board-title">Card Title:</label>
-                <input type="text" id="board-title" value="BINGO">
+                <input type="text" id="board-title" value="பிங்கோ">
             </div>
 
             <div class="form-group">
@@ -305,9 +305,9 @@
 
             // Get Inputs
             const rawWords = document.getElementById('word-list').value;
-            const cardTitle = document.getElementById('board-title').value.trim() || 'BINGO';
+            const cardTitle = document.getElementById('board-title').value.trim() || 'பிங்கோ';
             const boardCount = parseInt(document.getElementById('board-count').value, 10);
-            const gridSize = parseInt(document.getElementById('grid-size').value, 10);
+            const gridSize = parseInt(document.getElementById('grid-size').value, 50);
             const includeFree = document.getElementById('include-free').checked;
             const freeText = document.getElementById('free-text').value.trim() || 'FREE';
 
