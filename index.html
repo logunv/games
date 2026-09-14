@@ -1,3 +1,87 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TamilED Banner</title>
+  <style>
+    /* Reset default margins and padding */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Banner Container Styling */
+    .top-banner {
+      width: 100%;
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); /* Elegant blue gradient */
+      color: #ffffff;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* Logo / Brand Name Text */
+    .banner-brand {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .banner-brand span {
+      color: #ffcc00; /* Highlight color for "ED" */
+    }
+
+    /* Optional Navigation Links inside the Banner */
+    .banner-nav a {
+      color: #ffffff;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 16px;
+      transition: color 0.3s ease;
+    }
+
+    .banner-nav a:hover {
+      color: #ffcc00;
+    }
+
+    /* Responsive Design for Mobile Screens */
+    @media (max-width: 600px) {
+      .top-banner {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+      }
+
+      .banner-nav a {
+        margin: 0 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Banner Start -->
+  <header class="top-banner">
+    <div class="banner-brand">
+      Tamil<span>ED</span>
+    </div>
+    <nav class="banner-nav">
+      <a href="#home">Home</a>
+      <a href="#courses">Courses</a>
+      <a href="#about">About Us</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+  <!-- Top Banner End -->
+
+</body>
+</html>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -94,3 +178,93 @@
 </html>
 </center>
 </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Footer Example</title>
+  <style>
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background-color: #f4f4f9;
+    }
+
+    /* Footer Styling */
+    .site-footer {
+      background-color: #1a1a2e;
+      color: #ffffff;
+      padding: 20px 0;
+      text-align: center;
+      margin-top: auto;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .footer-name {
+      font-size: 1.2rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-bottom: 5px;
+    }
+
+    .footer-copyright {
+      font-size: 0.85rem;
+      color: #a0a0a0;
+    }
+
+    /* Optional: Social Links Styling */
+    .footer-links {
+      margin-top: 10px;
+    }
+
+    .footer-links a {
+      color: #00adb5;
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 0.9rem;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Main page content goes here -->
+
+  <!-- Footer Section -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-name">Logu Venkatachalam</div>
+      <div class="footer-copyright">
+        &copy; <span id="year"></span> Logu Venkatachalam. All rights reserved.
+      </div>
+      
+      <!-- Optional Social / Navigation Links -->
+    </div>
+  </footer>
+
+  <!-- Simple script to keep the copyright year current automatically -->
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
