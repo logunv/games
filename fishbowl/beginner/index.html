@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
-
   <head>
-    <title>TamilED Fish Bowl Beginner</title>
+    <title>TamilED Fish Bowl for Beginners</title>
     <meta charset="UTF-8">
     <style>
 		body {
@@ -36,14 +35,12 @@
         background: black;
         color: white;
       }
-
     </style>
-
   </head>
 
   <body onload="focus()" >
   <center>
-    <header>Fish Bowl</header>
+    <header>TamilED Fish Bowl for Beginners</header>
     <table>
       <tr>
         <td width=1024 id=dice1 align=center><img width=100% height=666 src=rusty.jpg /></td>
@@ -52,7 +49,7 @@
 	<p>
     <button onclick="rollDice()" id=roll class=button type="button">Roll</button> 
 
-  <script>
+	<script>
     var words = ['',
 		'aamai.png',
 		'banana.png',
@@ -78,66 +75,66 @@
 	];
  
 	function getRandom(w) {
-		var length = w.length - 1;
+		const length = w.length - 1;
     
-		var r1 = Math.floor(Math.random() * length) + 1;
+		let r1 = Math.floor(Math.random() * length) + 1;
 		word = w[r1];
 		w.splice(r1, 1);
 		return word;
 	}
 
-  function focus() {
-    document.getElementById("roll").focus(); 
-  }
+	function focus() {
+		document.getElementById("roll").focus(); 
+	}
 
-  function rollDice() {
-    var btn = document.getElementById("roll");
-    document.getElementById("dice1").innerHTML = "";
-    btn.innerHTML = "Rolling...";
-    btn.style.background = "yellow";
-    btn.style.color = "black";
-    spin();
-    sleep(500).then(() => {
-      stopSpin();
-      var w = getRandom(words);
-      img1 = '<img id=word1 width=1024 height=666 align=center src="' + w + '"</img>';
-      document.getElementById("dice1").innerHTML = img1;
-      var ans = w.split('.')[0];
-      btn.innerHTML = "Roll";
-      btn.style.background = "blue";
-      btn.style.color = "white";
-      if(words.length <= 1) {
-          btn.innerHTML = "That's all folks!";
-          btn.style.background = "black";
-          btn.disabled = true;
-      }
-    });
-  }
-  var spinners = [ '',
+	function rollDice() {
+	    var btn = document.getElementById("roll");
+	    document.getElementById("dice1").innerHTML = "";
+	    btn.innerHTML = "Rolling...";
+	    btn.style.background = "yellow";
+	    btn.style.color = "black";
+	    spin();
+	    sleep(500).then(() => {
+	      stopSpin();
+	      var w = getRandom(words);
+	      img1 = '<img id=word1 width=1024 height=666 align=center src="' + w + '"</img>';
+	      document.getElementById("dice1").innerHTML = img1;
+	      var ans = w.split('.')[0];
+	      btn.innerHTML = "Roll";
+	      btn.style.background = "blue";
+	      btn.style.color = "white";
+	      if(words.length <= 1) {
+	          btn.innerHTML = "That's all folks!";
+	          btn.style.background = "black";
+	          btn.disabled = true;
+	      }
+	    });
+	}
+	var spinners = [ '',
      'single-dice-rolling.gif', 'giphy.gif', 'wheel.gif',
      'bird.gif', 'clock-animated-gif-9.gif',
      'clock-fast-white.gif', 'dice-rolling-gif-8.gif'
-  ];
+	];
 
-  function spin() {
-    var length = spinners.length - 1;
-    var r1 = Math.floor(Math.random() * length) + 1;
-    var gif = spinners[r1];
-    spinner = "<center><img width=100% height=666 src=" + gif + " />";
-    document.getElementById("dice1").innerHTML = spinner;
-  }
+	function spin() {
+	    var length = spinners.length - 1;
+	    var r1 = Math.floor(Math.random() * length) + 1;
+	    var gif = spinners[r1];
+	    spinner = "<center><img width=100% height=666 src=" + gif + " />";
+	    document.getElementById("dice1").innerHTML = spinner;
+	}
 
-  function stopSpin() {
-    document.getElementById("dice1").innerHTML = "";
-  }
+	function stopSpin() {
+    	document.getElementById("dice1").innerHTML = "";
+	}
 
-  function sleep (time) {
-    return new Promise((resolve) => setTimeout(resolve, time));
-  }
+	function sleep (time) {
+    	return new Promise((resolve) => setTimeout(resolve, time));
+	}
 
-</script>
+    </script>
 
-</body>
+  </body>
 
 </html>
 

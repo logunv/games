@@ -11,9 +11,11 @@
     .name {
         padding-left:15px;
     }
+	/*
     #word1 {
        font-size:120px;
     }
+	*/
     .red { color:red }
     .blue { color:blue }
     td:hover {
@@ -23,18 +25,20 @@
        text-align:center;
     }
     header {
-       padding: 10px;
+       padding-bottom: 10px;
        margin-bottom: 10px;
        text-align:center;
-       font-size: 40px;
+       font-size: 30px;
        color: white;
-       background: Olive;
+	   background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); /* Elegant blue gradient */
+
     }
     tr {
        height:45px;
        font-size: 25px;
        border: 0 0 2px 0;
     }
+	/*
     .up {
        color: white;
        background: blue;
@@ -55,6 +59,7 @@
       cursor: progress;
       background: red;
     }
+	*/
     td {
       background: white;
       color: blue;
@@ -63,7 +68,7 @@
 
 </head>
 
-  <body onload="focus()" bgcolor=Gainsboro >
+  <body onload="focus()">
     <center>
     <header>S C O R E B O A R D</header>
     <h3>Players:</h3>
@@ -73,7 +78,9 @@
     <table bgcolor=LightSteelBlue width=900 id="names">
     </table>
 
-    <input onkeydown="search(this)" type="text" id="name" > <button onclick="addItem()">Add Players</button>
+	<input onkeydown="search(this)" type="text" id="name" > <button onclick="addItem()">Add Player(s)</button>
+	<br>
+	<button onclick="clearNames()">Clear Players</button>
 
     <script>
       var nItems = 1;
@@ -159,6 +166,15 @@
             nItems++;
         }
       }
+
+	  function clearNames() {
+		const table = document.getElementById('names');
+		for (let i = table.rows.length - 1; i >= 0; i--) {
+			table.deleteRow(i);
+		}
+		focus();
+	  }
+
       function search(ele) {
         if(event.key === 'Enter') addItem();
       }
