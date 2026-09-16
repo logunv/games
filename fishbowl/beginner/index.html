@@ -75,16 +75,16 @@
 		'soru.png',
 		'thalai.png',
 		'vellai.png',
-  ];
+	];
  
-  function getRandom(w) {
-     var length = w.length - 1;
+	function getRandom(w) {
+		var length = w.length - 1;
     
-     var r1 = Math.floor(Math.random() * length) + 1;
-     word = w[r1];
-     w.splice(r1, 1);
-     return word;
-  }
+		var r1 = Math.floor(Math.random() * length) + 1;
+		word = w[r1];
+		w.splice(r1, 1);
+		return word;
+	}
 
   function focus() {
     document.getElementById("roll").focus(); 
