@@ -5,6 +5,13 @@
   <title>TamilED - Memory Game - Food</title>
   <meta charset="UTF-8">
   <style>
+	.card {
+		width:260px;
+		height:260px;
+	}
+	body {
+		background-image: url('../background.jpg');		
+	}
     td {
       background: white;
       color: blue;
@@ -26,21 +33,22 @@
 </head>
 
   <body bgcolor=Gainsboro onload='init()'>
-    <table bgcolor=LightSteelBlue width=1024>
+	<center>
+    <table bgcolor=LightSteelBlue width=600>
 <tr>
-      <td> <img onclick=showId(0) title=images/food/chutney.jpg id=0 width=340 height=320 src=images/food/chutney.jpg></img></td>
-      <td> <img onclick=showId(1) title=images/food/dosai.jpg id=1 width=340 height=320 src=images/food/dosai.jpg></img></td>
-      <td> <img onclick=showId(2) title=images/food/idli.jpeg id=2 width=340 height=320 src=images/food/idli.jpg></img></td>
+      <td> <img class=card onclick=showId(0) title=images/food/chutney.jpg id=0 src=images/food/chutney.jpg></img></td>
+      <td> <img class=card onclick=showId(1) title=images/food/dosai.jpg id=1 src=images/food/dosai.jpg></img></td>
+      <td> <img class=card onclick=showId(2) title=images/food/idli.jpeg id=2 src=images/food/idli.jpg></img></td>
 </tr>
 <tr>
-      <td> <img onclick=showId(3) title=images/food/pongal.jpg id=3 width=340 height=320 src=images/food/pongal.jpg></img></td>
-      <td> <img onclick=showId(4) title=images/food/rasam.jpg id=4 width=340 height=320 src=images/food/rasam.jpg></img></td>
-      <td> <img onclick=showId(5) title=images/food/sambar.jpg id=5 width=340 height=320 src=images/food/sambar.jpg></img></td>
+      <td> <img class=card onclick=showId(3) title=images/food/pongal.jpg id=3 src=images/food/pongal.jpg></img></td>
+      <td> <img class=card onclick=showId(4) title=images/food/rasam.jpg id=4 src=images/food/rasam.jpg></img></td>
+      <td> <img class=card onclick=showId(5) title=images/food/sambar.jpg id=5 src=images/food/sambar.jpg></img></td>
 </tr>
 <tr>
-      <td> <img onclick=showId(6) title=images/food/soru.jpg id=6 width=340 height=320 src=images/food/soru.jpg></img></td>
-      <td> <img onclick=showId(7) title=images/food/sundal.jpg id=7 width=340 height=320 src=images/food/sundal.jpg></img></td>
-      <td> <img onclick=showId(8) title=images/food/vadai.jpg id=8 width=340 height=320 src=images/food/vadai.jpg></img></td>
+      <td> <img class=card onclick=showId(6) title=images/food/soru.jpg id=6 src=images/food/soru.jpg></img></td>
+      <td> <img class=card onclick=showId(7) title=images/food/sundal.jpg id=7 src=images/food/sundal.jpg></img></td>
+      <td> <img class=card onclick=showId(8) title=images/food/vadai.jpg id=8 src=images/food/vadai.jpg></img></td>
 </tr>
     </table>
 <table>

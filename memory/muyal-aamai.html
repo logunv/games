@@ -5,6 +5,13 @@
   <title>TamilED - Memory Game - Muyal Aamai</title>
   <meta charset="UTF-8">
   <style>
+	.card {
+		width:260px;
+		height:260px;
+	}
+	body {
+		background-image: url('../background.jpg');		
+	}
     td {
       background: white;
       color: blue;
@@ -26,21 +33,22 @@
 </head>
 
   <body bgcolor=Gainsboro onload='init()'>
-    <table bgcolor=LightSteelBlue width=1024>
+	<center>
+    <table bgcolor=LightSteelBlue width=600>
 <tr>
-      <td> <img onclick=showId(0) title=images/muyal-aamai/bunny.png id=0 width=340 height=320 src=images/muyal-aamai/bunny.png></img></td>
-      <td> <img onclick=showId(1) title=images/muyal-aamai/crow.jpg id=1 width=340 height=320 src=images/muyal-aamai/crow.jpg></img></td>
-      <td> <img onclick=showId(2) title=images/muyal-aamai/elephant.jpg id=2 width=340 height=320 src=images/muyal-aamai/elephant.jpg></img></td>
+      <td> <img class=card onclick=showId(0) title=images/muyal-aamai/bunny.png id=0 src=images/muyal-aamai/bunny.png></img></td>
+      <td> <img class=card onclick=showId(1) title=images/muyal-aamai/crow.jpg id=1 src=images/muyal-aamai/crow.jpg></img></td>
+      <td> <img class=card onclick=showId(2) title=images/muyal-aamai/elephant.jpg id=2 src=images/muyal-aamai/elephant.jpg></img></td>
 </tr>
 <tr>
-      <td> <img onclick=showId(3) title=images/muyal-aamai/prize.jpg id=3 width=340 height=320 src=images/muyal-aamai/prize.jpg></img></td>
-      <td> <img onclick=showId(4) title=images/muyal-aamai/race.jpg id=4 width=340 height=320 src=images/muyal-aamai/race.jpg></img></td>
-      <td> <img onclick=showId(5) title=images/muyal-aamai/sleep.jpg id=5 width=340 height=320 src=images/muyal-aamai/sleep.jpg></img></td>
+      <td> <img class=card onclick=showId(3) title=images/muyal-aamai/prize.jpg id=3 src=images/muyal-aamai/prize.jpg></img></td>
+      <td> <img class=card onclick=showId(4) title=images/muyal-aamai/race.jpg id=4 src=images/muyal-aamai/race.jpg></img></td>
+      <td> <img class=card onclick=showId(5) title=images/muyal-aamai/sleep.jpg id=5 src=images/muyal-aamai/sleep.jpg></img></td>
 </tr>
 <tr>
-      <td> <img onclick=showId(6) title=images/muyal-aamai/tree.jpg id=6 width=340 height=320 src=images/muyal-aamai/tree.jpg></img></td>
-      <td> <img onclick=showId(7) title=images/muyal-aamai/turtle.jpg id=7 width=340 height=320 src=images/muyal-aamai/turtle.jpg></img></td>
-      <td> <img onclick=showId(8) title=images/muyal-aamai/win.png id=8 width=340 height=320 src=images/muyal-aamai/win.png></img></td>
+      <td> <img class=card onclick=showId(6) title=images/muyal-aamai/tree.jpg id=6 src=images/muyal-aamai/tree.jpg></img></td>
+      <td> <img class=card onclick=showId(7) title=images/muyal-aamai/turtle.jpg id=7 src=images/muyal-aamai/turtle.jpg></img></td>
+      <td> <img class=card onclick=showId(8) title=images/muyal-aamai/win.png id=8 src=images/muyal-aamai/win.png></img></td>
 </tr>
     </table>
 <table>

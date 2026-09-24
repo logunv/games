@@ -5,6 +5,13 @@
   <title>TamilED - Memory Game - Vehicles</title>
   <meta charset="UTF-8">
   <style>
+	.card {
+		width:260px;
+		height:260px;
+	}
+	body {
+		background-image: url('../background.jpg');		
+	}
     td {
       background: white;
       color: blue;
@@ -26,21 +33,22 @@
 </head>
 
   <body bgcolor=Gainsboro onload='init()'>
-    <table bgcolor=LightSteelBlue width=1024>
+	<center>
+    <table bgcolor=LightSteelBlue width=600>
 <tr>
-      <td> <img onclick=showId(0) title=images/veh/car.jpg id=0 width=340 height=320 src=images/veh/car.jpg></img></td>
-      <td> <img onclick=showId(1) title=images/veh/cycle.jpg id=1 width=340 height=320 src=images/veh/cycle.jpg></img></td>
-      <td> <img onclick=showId(2) title=images/veh/motorbike.jpg id=2 width=340 height=320 src=images/veh/motorbike.jpg></img></td>
+      <td> <img class=card onclick=showId(0) title=images/veh/car.jpg id=0 src=images/veh/car.jpg></img></td>
+      <td> <img class=card onclick=showId(1) title=images/veh/cycle.jpg id=1 src=images/veh/cycle.jpg></img></td>
+      <td> <img class=card onclick=showId(2) title=images/veh/motorbike.jpg id=2 src=images/veh/motorbike.jpg></img></td>
 </tr>
 <tr>
-      <td> <img onclick=showId(3) title=images/veh/plane.jpg id=3 width=340 height=320 src=images/veh/plane.jpg></img></td>
-      <td> <img onclick=showId(4) title=images/veh/redbus.jpg id=4 width=340 height=320 src=images/veh/redbus.jpg></img></td>
-      <td> <img onclick=showId(5) title=images/veh/schoolbus.jpg id=5 width=340 height=320 src=images/veh/schoolbus.jpg></img></td>
+      <td> <img class=card onclick=showId(3) title=images/veh/plane.jpg id=3 src=images/veh/plane.jpg></img></td>
+      <td> <img class=card onclick=showId(4) title=images/veh/redbus.jpg id=4 src=images/veh/redbus.jpg></img></td>
+      <td> <img class=card onclick=showId(5) title=images/veh/schoolbus.jpg id=5 src=images/veh/schoolbus.jpg></img></td>
 </tr>
 <tr>
-      <td> <img onclick=showId(6) title=images/veh/ship.jpg id=6 width=340 height=320 src=images/veh/ship.jpg></img></td>
-      <td> <img onclick=showId(7) title=images/veh/train.jpg id=7 width=340 height=320 src=images/veh/train.jpg></img></td>
-      <td> <img onclick=showId(8) title=images/veh/truck.jpg id=8 width=340 height=320 src=images/veh/truck.jpg></img></td>
+      <td> <img class=card onclick=showId(6) title=images/veh/ship.jpg id=6 src=images/veh/ship.jpg></img></td>
+      <td> <img class=card onclick=showId(7) title=images/veh/train.jpg id=7 src=images/veh/train.jpg></img></td>
+      <td> <img class=card onclick=showId(8) title=images/veh/truck.jpg id=8 src=images/veh/truck.jpg></img></td>
 </tr>
     </table>
 <table>

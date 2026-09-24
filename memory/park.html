@@ -5,6 +5,9 @@
   <title>TamilED - Memory Game - Park</title>
   <meta charset="UTF-8">
   <style>
+	body {
+		background-image: url('../background.jpg');
+	}
     td {
       background: white;
       color: blue;
@@ -20,28 +23,33 @@
       color: white;
       font-size:30px;
     }
+	.card {
+		width:260px;
+		height:260px;
+	}
 
   </style>
 
 </head>
 
   <body bgcolor=Gainsboro onload='init()'>
-    <table bgcolor=LightSteelBlue width=1024>
-<tr>
-      <td> <img onclick=showId(0) title=images/park/adults.png id=0 width=340 height=320 src=images/park/adults.png></img></td>
-      <td> <img onclick=showId(1) title=images/park/bench.jpg id=1 width=340 height=320 src=images/park/bench.jpg></img></td>
-      <td> <img onclick=showId(2) title=images/park/birds.png id=2 width=340 height=320 src=images/park/birds.png></img></td>
-</tr>
-<tr>
-      <td> <img onclick=showId(3) title=images/park/cricket.png id=3 width=340 height=320 src=images/park/cricket.png></img></td>
-      <td> <img onclick=showId(4) title=images/park/dogs-cats.png id=4 width=340 height=320 src=images/park/dogs-cats.png></img></td>
-      <td> <img onclick=showId(5) title=images/park/house.png id=5 width=340 height=320 src=images/park/house.png></img></td>
-</tr>
-<tr>
-      <td> <img onclick=showId(6) title=images/park/kids-play.jpg id=6 width=340 height=320 src=images/park/kids-play.jpg></img></td>
-      <td> <img onclick=showId(7) title=images/park/kids.png id=7 width=340 height=320 src=images/park/kids.png></img></td>
-      <td> <img onclick=showId(8) title=images/park/lake.jpg id=8 width=340 height=320 src=images/park/lake.jpg></img></td>
-</tr>
+	<center>
+    <table bgcolor=LightSteelBlue width=600>
+	<tr>
+      <td> <img class=card onclick=showId(0) title=images/park/adults.png id=0 src=images/park/adults.png></img></td>
+      <td> <img class=card onclick=showId(1) title=images/park/bench.jpg id=1  src=images/park/bench.jpg></img></td>
+      <td> <img class=card onclick=showId(2) title=images/park/birds.png id=2  src=images/park/birds.png></img></td>
+	</tr>
+	<tr>
+      <td> <img class=card onclick=showId(3) title=images/park/cricket.png id=3 src=images/park/cricket.png></img></td>
+      <td> <img class=card onclick=showId(4) title=images/park/dogs-cats.png id=4 src=images/park/dogs-cats.png></img></td>
+      <td> <img class=card onclick=showId(5) title=images/park/house.png id=5 src=images/park/house.png></img></td>
+	</tr>
+	<tr>
+      <td> <img class=card onclick=showId(6) title=images/park/kids-play.jpg id=6 src=images/park/kids-play.jpg></img></td>
+      <td> <img class=card onclick=showId(7) title=images/park/kids.png id=7 src=images/park/kids.png></img></td>
+      <td> <img class=card onclick=showId(8) title=images/park/lake.jpg id=8 src=images/park/lake.jpg></img></td>
+	</tr>
     </table>
 <table>
 <tr>
