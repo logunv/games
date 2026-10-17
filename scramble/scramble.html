@@ -226,7 +226,26 @@
 		{ word: "சிங்கம்", hint: "காட்டு இராஜா" },
 		{ word: "பொங்கல்", hint: "சாபாடு" },
 		{ word: "பச்சை", hint: "நிறம்" },
+		{ word: "வெள்ளை", hint: "நிறம்" },
 		{ word: "நீலம்", hint: "நிறம்" },
+		{ word: "அக்கா", hint: "உன் உறவு" },
+		{ word: "கொக்கு", hint: "ஒரு பறவை" },
+		{ word: "தங்கை", hint: "உன் உறவு" },
+		{ word: "தொட்டி", hint: "செடி வைக்கலாம்" },
+		{ word: "ஐந்து", hint: "ஒரு எண்" },
+		{ word: "எட்டு", hint: "ஒரு எண்" },
+		{ word: "மூன்று", hint: "ஒரு எண்" },
+		{ word: "பாட்டி", hint: "உன் உறவு" },
+		{ word: "சேவல்", hint: "ஒரு பறவை" },
+		{ word: "மூக்கு", hint: "உன் முகத்தில் இருக்கும்" },
+		{ word: "பத்து", hint: "ஒரு எண்" },
+/*
+		{ word: "", hint: "" },
+		{ word: "", hint: "" },
+		{ word: "", hint: "" },
+		{ word: "", hint: "" },
+		{ word: "", hint: "" },
+*/
 		{ word: "வானம்", meaning: "Sky", hint: "மேலே இருக்கும். " }
         ],
         intermediate: [
@@ -358,7 +377,8 @@
 		  pool.splice(index, 1);
 		}
 	}
-    function checkAnswer() {
+
+	function checkAnswer() {
         const userAttempt = selectedLetters.map(item => item.char).join('');
         const messageEl = document.getElementById('message');
 
@@ -370,6 +390,7 @@
             document.getElementById('score').innerText = score;
             document.getElementById('streak').innerText = streak;
 			removeWord(wordBank[currentLevel], userAttempt);
+			
 			setTimeout(() => {
 			    nextWord();
 			}, 1500);
@@ -380,7 +401,6 @@
             document.getElementById('streak').innerText = streak;
         }
     }
-
     nextWord();
 </script>
 </body>
