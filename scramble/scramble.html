@@ -210,22 +210,28 @@
         beginner: [
             { word: "அம்மா", meaning: "Mother", hint: "நம்மை ஈன்றவள்" },
             { word: "அப்பா", meaning: "Father", hint: "குடும்பத்தின் தலைவர்" },
-			{ word: "நிலவு", meaning: "Moon", hint: "இரவில் ஒளிரும் விண்பொருள்" },
-			{ word: "பகல்", hint: "இரவுக்கு எதிர்." },
-            { word: "மலர்", meaning: "Flower", hint: "செடியில் பூப்பது" },
-			{ word: "மரம்", meaning: "Tree", hint: "நிழல் தரும் தாவரம்" },
-			// { word: "", hint: "" },
-			{ word: "பந்து", hint: "விளையாடலாம்" },
-			{ word: "விரல்", hint: "கையில் இருக்கும்" },
-			{ word: "கரடி", hint: "காட்டில் இருக்கும்" },
-			{ word: "இட்டலி", hint: "சாப்பிடலாம்" },
-			{ word: "காகம்", hint: "பறவை" },
-			{ word: "வானம்", meaning: "Sky", hint: "மேலே இருக்கும். " }
+		{ word: "நிலவு", meaning: "Moon", hint: "இரவில் ஒளிரும் விண்பொருள்" },
+		{ word: "பகல்", hint: "இரவுக்கு எதிர்." },
+           { word: "மலர்", meaning: "Flower", hint: "செடியில் பூப்பது" },
+		{ word: "மரம்", meaning: "Tree", hint: "நிழல் தரும் தாவரம்" },
+		// { word: "", hint: "" },
+		{ word: "பந்து", hint: "விளையாடலாம்" },
+		{ word: "விரல்", hint: "கையில் இருக்கும்" },
+		{ word: "கரடி", hint: "காட்டில் இருக்கும்" },
+		{ word: "இட்டலி", hint: "சாப்பிடலாம்" },
+		{ word: "காகம்", hint: "பறவை" },
+		{ word: "குயில்", hint: "இது கூவும்" },
+		{ word: "மயில்", hint: "இது ஆடும்" },
+		{ word: "நாக்கு", hint: "வாயில் இருக்கும்" },
+		{ word: "சிங்கம்", hint: "காட்டு இராஜா" },
+		{ word: "பொங்கல்", hint: "சாபாடு" },
+		{ word: "பச்சை", hint: "நிறம்" },
+		{ word: "நீலம்", hint: "நிறம்" },
+		{ word: "வானம்", meaning: "Sky", hint: "மேலே இருக்கும். " }
         ],
         intermediate: [
             { word: "புத்தகம்", meaning: "Book", hint: "படிக்க உதவும் நூல்" },
             { word: "சூரியன்", meaning: "Sun", hint: "பகலில் ஒளி தரும் கோள்" },
-            { word: "பட்டாம்பூச்சி", meaning: "Butterfly", hint: "வண்ணமயமான பறக்கும் பூச்சி" },
             { word: "வானவில்", meaning: "Rainbow", hint: "மழைக்கு பின் தோன்றும் 7 வண்ணங்கள்" },
             { word: "நட்பு", meaning: "Friendship", hint: "நல்ல நண்பர்களின் தொடர்பு" }
         ],
@@ -234,6 +240,7 @@
             { word: "தொழில்நுட்பம்", meaning: "Technology", hint: "நவீன கால அறிவியல் வளர்ச்சி" },
             { word: "சுதந்திரம்", meaning: "Freedom", hint: "விடுதலை / சுயாதீனம்" },
             { word: "நம்பிக்கை", meaning: "Trust / Hope", hint: "மனதின் உறுதி" },
+			{ word: "பட்டாம்பூச்சி", meaning: "Butterfly", hint: "வண்ணமயமான பறக்கும் பூச்சி" },
             { word: "பல்கலைக்கழகம்", meaning: "University", hint: "உயர்கல்வி கற்கும் இடம்" }
         ]
     };
@@ -270,6 +277,12 @@
 
     function nextWord() {
         const pool = wordBank[currentLevel];
+		if(pool.length <= 0) {
+			const messageEl = document.getElementById('scramble-area');
+		    messageEl.innerText = 'All done!';
+		    messageEl.className = 'message correct';
+			return;
+		}
         currentWordObj = pool[Math.floor(Math.random() * pool.length)];
         selectedLetters = [];
         
@@ -288,6 +301,8 @@
         }
 
         const scrambleArea = document.getElementById('scramble-area');
+		scrambleArea.className = 'tiles-container'; 
+
         const answerArea = document.getElementById('answer-area');
         
         scrambleArea.innerHTML = '';
@@ -337,6 +352,12 @@
         }
     }
 
+	function removeWord(pool, word) {
+		const index = pool.findIndex(item => item.word === word);
+		if (index !== -1) {
+		  pool.splice(index, 1);
+		}
+	}
     function checkAnswer() {
         const userAttempt = selectedLetters.map(item => item.char).join('');
         const messageEl = document.getElementById('message');
@@ -348,6 +369,7 @@
             streak += 1;
             document.getElementById('score').innerText = score;
             document.getElementById('streak').innerText = streak;
+			removeWord(wordBank[currentLevel], userAttempt);
 			setTimeout(() => {
 			    nextWord();
 			}, 1500);
