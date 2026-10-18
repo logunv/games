@@ -36,7 +36,6 @@
         /* Top Title Bar */
         .top-bar {
             width: 100%;
-            //background: var(--primary-dark);
 			background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             color: #ffffff;
             text-align: center;
@@ -208,56 +207,59 @@
 <script>
     const wordBank = {
         beginner: [
-            { word: "அம்மா", meaning: "Mother", hint: "நம்மை ஈன்றவள்" },
+			{ word: "அம்மா", meaning: "Mother", hint: "நம்மை ஈன்றவள்" },
             { word: "அப்பா", meaning: "Father", hint: "குடும்பத்தின் தலைவர்" },
-		{ word: "நிலவு", meaning: "Moon", hint: "இரவில் ஒளிரும் விண்பொருள்" },
-		{ word: "பகல்", hint: "இரவுக்கு எதிர்." },
-           { word: "மலர்", meaning: "Flower", hint: "செடியில் பூப்பது" },
-		{ word: "மரம்", meaning: "Tree", hint: "நிழல் தரும் தாவரம்" },
+			{ word: "நிலவு", meaning: "Moon", hint: "இரவில் ஒளிரும் விண்பொருள்" },
+			{ word: "பகல்", hint: "இரவுக்கு எதிர்." },
+			{ word: "மலர்", meaning: "Flower", hint: "செடியில் பூப்பது" },
+			{ word: "மரம்", meaning: "Tree", hint: "நிழல் தரும் தாவரம்" },
 		// { word: "", hint: "" },
-		{ word: "பந்து", hint: "விளையாடலாம்" },
-		{ word: "விரல்", hint: "கையில் இருக்கும்" },
-		{ word: "கரடி", hint: "காட்டில் இருக்கும்" },
-		{ word: "இட்டலி", hint: "சாப்பிடலாம்" },
-		{ word: "காகம்", hint: "பறவை" },
-		{ word: "குயில்", hint: "இது கூவும்" },
-		{ word: "மயில்", hint: "இது ஆடும்" },
-		{ word: "நாக்கு", hint: "வாயில் இருக்கும்" },
-		{ word: "சிங்கம்", hint: "காட்டு இராஜா" },
-		{ word: "பொங்கல்", hint: "சாபாடு" },
-		{ word: "பச்சை", hint: "நிறம்" },
-		{ word: "வெள்ளை", hint: "நிறம்" },
-		{ word: "நீலம்", hint: "நிறம்" },
-		{ word: "அக்கா", hint: "உன் உறவு" },
-		{ word: "கொக்கு", hint: "ஒரு பறவை" },
-		{ word: "தங்கை", hint: "உன் உறவு" },
-		{ word: "தொட்டி", hint: "செடி வைக்கலாம்" },
-		{ word: "ஐந்து", hint: "ஒரு எண்" },
-		{ word: "எட்டு", hint: "ஒரு எண்" },
-		{ word: "மூன்று", hint: "ஒரு எண்" },
-		{ word: "பாட்டி", hint: "உன் உறவு" },
-		{ word: "சேவல்", hint: "ஒரு பறவை" },
-		{ word: "மூக்கு", hint: "உன் முகத்தில் இருக்கும்" },
-		{ word: "பத்து", hint: "ஒரு எண்" },
+			{ word: "பந்து", hint: "விளையாடலாம்" },
+			{ word: "விரல்", hint: "கையில் இருக்கும்" },
+			{ word: "கரடி", hint: "காட்டில் இருக்கும்" },
+			{ word: "இட்டலி", hint: "சாப்பிடலாம்" },
+			{ word: "காகம்", hint: "பறவை" },
+			{ word: "குயில்", hint: "இது கூவும்" },
+			{ word: "மயில்", hint: "இது ஆடும்" },
+			{ word: "நாக்கு", hint: "வாயில் இருக்கும்" },
+			{ word: "சிங்கம்", hint: "காட்டு இராஜா" },
+			{ word: "பொங்கல்", hint: "சாபாடு" },
+			{ word: "பச்சை", hint: "நிறம்" },
+			{ word: "வெள்ளை", hint: "நிறம்" },
+			{ word: "நீலம்", hint: "நிறம்" },
+			{ word: "அக்கா", hint: "உன் உறவு" },
+			{ word: "கொக்கு", hint: "ஒரு பறவை" },
+			{ word: "தங்கை", hint: "உன் உறவு" },
+			{ word: "தொட்டி", hint: "செடி வைக்கலாம்" },
+			{ word: "ஐந்து", hint: "ஒரு எண்" },
+			{ word: "எட்டு", hint: "ஒரு எண்" },
+			{ word: "மூன்று", hint: "ஒரு எண்" },
+			{ word: "பாட்டி", hint: "உன் உறவு" },
+			{ word: "சேவல்", hint: "ஒரு பறவை" },
+			{ word: "மூக்கு", hint: "உன் முகத்தில் இருக்கும்" },
+			{ word: "பத்து", hint: "ஒரு எண்" },
 /*
-		{ word: "", hint: "" },
-		{ word: "", hint: "" },
-		{ word: "", hint: "" },
-		{ word: "", hint: "" },
-		{ word: "", hint: "" },
+			{ word: "", hint: "" },
+			{ word: "", hint: "" },
+			{ word: "", hint: "" },
+			{ word: "", hint: "" },
+			{ word: "", hint: "" },
 */
-		{ word: "வானம்", meaning: "Sky", hint: "மேலே இருக்கும். " }
+			{ word: "வானம்", meaning: "Sky", hint: "மேலே இருக்கும். " }
         ],
         intermediate: [
             { word: "புத்தகம்", meaning: "Book", hint: "படிக்க உதவும் நூல்" },
             { word: "சூரியன்", meaning: "Sun", hint: "பகலில் ஒளி தரும் கோள்" },
             { word: "வானவில்", meaning: "Rainbow", hint: "மழைக்கு பின் தோன்றும் 7 வண்ணங்கள்" },
+			{ word: "சந்திரன்", hint: "இரவில் வரும்" },
+			{ word: "நாற்காலி", hint: "உட்கார உதவும்" },
             { word: "நட்பு", meaning: "Friendship", hint: "நல்ல நண்பர்களின் தொடர்பு" }
         ],
         advanced: [
             { word: "அரசாங்கம்", meaning: "Government", hint: "நாட்டை ஆளும் அமைப்பு" },
             { word: "தொழில்நுட்பம்", meaning: "Technology", hint: "நவீன கால அறிவியல் வளர்ச்சி" },
             { word: "சுதந்திரம்", meaning: "Freedom", hint: "விடுதலை / சுயாதீனம்" },
+			{ word: "நட்சத்திரம்", hint: "இரவில் வானத்தில் பார்க்கலாம்" },
             { word: "நம்பிக்கை", meaning: "Trust / Hope", hint: "மனதின் உறுதி" },
 			{ word: "பட்டாம்பூச்சி", meaning: "Butterfly", hint: "வண்ணமயமான பறக்கும் பூச்சி" },
             { word: "பல்கலைக்கழகம்", meaning: "University", hint: "உயர்கல்வி கற்கும் இடம்" }
