@@ -13,6 +13,7 @@
             --card: #ffffff;
 			--text: #333333;
 			--correct: #4caf50;
+			--answer: blue;
             --wrong: #f44336;
         }
 
@@ -51,7 +52,7 @@
             border-radius: 16px;
             box-shadow: 0 8px 24px rgba(0,0,0,0.12);
             width: 100%;
-            max-width: 600px;
+            max-width: 700px;
             padding: 24px;
             text-align: center;
             margin-top: 20px;
@@ -167,6 +168,7 @@
         }
 
 		.correct { color: var(--correct); }
+		.answer { color: var(--answer);}
         .wrong { color: var(--wrong); }
     </style>
 </head>
@@ -198,7 +200,8 @@
         <button class="btn btn-hint" onclick="showHint()">குறிப்பு</button>
         <button class="btn btn-reset" onclick="resetCurrentWord()">மீட்டமை</button>
         <button class="btn btn-check" onclick="checkAnswer()">சரிபார்</button>
-        <button class="btn btn-next" onclick="nextWord()">அடுத்த சொல்</button>
+		<button class="btn btn-next" onclick="nextWord()">அடுத்த சொல்</button>
+		<button class="btn btn-next" onclick="showAnswer()">விடை</button>
     </div>
 
 	<div class="message" id="message"></div>
@@ -381,6 +384,16 @@
 		if (index !== -1) {
 		  pool.splice(index, 1);
 		}
+	}
+	
+
+	function showAnswer() {
+		const answerArea = document.getElementById('message');
+		answerArea.className = 'message answer';
+		answerArea.innerHTML = currentWordObj.word;
+		setTimeout(() => {
+		    nextWord();
+		}, 2000);
 	}
 
 	function checkAnswer() {
