@@ -339,6 +339,7 @@
             const tile = createTile(char, index, 'scramble');
             scrambleArea.appendChild(tile);
         });
+		removeWord(wordBank[currentLevel], currentWordObj.word);
     }
 
     function createTile(char, id, source) {
