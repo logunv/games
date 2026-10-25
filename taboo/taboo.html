@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Taboo Word Game</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .game-container {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 500px;
+      padding: 24px;
+      text-align: center;
+    }
+
+    h1 {
+      margin-top: 0;
+      color: #333;
+    }
+
+    .setup-section {
+      margin-bottom: 20px;
+    }
+
+    textarea {
+      width: 100%;
+      height: 120px;
+      padding: 10px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      resize: vertical;
+      font-size: 14px;
+    }
+
+    .stats-bar {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .timer {
+      color: #e74c3c;
+    }
+
+    .score {
+      color: #2ecc71;
+    }
+
+    /* Taboo Card Styling */
+    .card {
+      background: #ffffff;
+      border: 3px solid #3498db;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    .target-word {
+      font-size: 28px;
+      font-weight: 800;
+      color: #2c3e50;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #eee;
+    }
+
+    .taboo-title {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #e74c3c;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .taboo-words {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .taboo-words li {
+      font-size: 18px;
+      color: #7f8c8d;
+      margin: 6px 0;
+      font-weight: 600;
+    }
+
+    /* Controls */
+    .btn-group {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    button {
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s, opacity 0.2s;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    button:disabled {
+      background-color: #cccccc !important;
+      color: #666666 !important;
+      cursor: not-allowed;
+      opacity: 1;
+    }
+
+    .btn-start { background-color: #3498db; color: white; width: 100%; }
+    .btn-correct { background-color: #2ecc71; color: white; flex: 1; }
+    .btn-taboo { background-color: #e74c3c; color: white; flex: 1; }
+    .btn-pass { background-color: #f39c12; color: white; flex: 1; }
+
+    .hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="game-container">
+    <h1>Taboo Game - TBD</h1>
+
+    <!-- Setup Screen -->
+    <div id="setupScreen" class="setup-section">
+      <p>Enter word cards below (Format per line: <code>Word: clue1, clue2, clue3</code>):</p>
+      <textarea id="cardInput" >தமிழ்: பள்ளி, மொழி, படி &#10;</textarea>
+      <br/><br/>
+      <button id="startBtn" class="btn-start">Start Game (60s)</button>
+    </div>
+
+    <!-- Active Game Screen -->
+    <div id="gameScreen" class="hidden">
+      <div class="stats-bar">
+        <div class="timer">Time: <span id="timeRemaining">60</span>s</div>
+        <div class="score">Score: <span id="scoreValue">0</span></div>
+      </div>
+
+      <div class="card">
+        <div id="targetWord" class="target-word">WORD</div>
+        <div class="taboo-title">Forbidden Words</div>
+        <ul id="tabooList" class="taboo-words">
+          <!-- Clues will be injected here -->
+        </ul>
+      </div>
+
+      <div class="btn-group">
+        <button id="correctBtn" class="btn-correct">Correct (+1)</button>
+        <button id="tabooBtn" class="btn-taboo">Taboo (-1)</button>
+        <button id="passBtn" class="btn-pass">Pass</button>
+      </div>
+    </div>
+
+    <!-- Game Over Screen -->
+    <div id="gameOverScreen" class="hidden">
+      <h2>Time's Up!</h2>
+      <p style="font-size: 22px;">Final Score: <strong id="finalScore">0</strong></p>
+      <button id="restartBtn" class="btn-start">Play Again</button>
+    </div>
+  </div>
+
+  <script>
+    // Game State
+    let cards = [];
+    let currentCardIndex = 0;
+    let score = 0;
+    let timer = null;
+    let timeLeft = 60;
+
+    // DOM Elements
+    const setupScreen = document.getElementById('setupScreen');
+    const gameScreen = document.getElementById('gameScreen');
+    const gameOverScreen = document.getElementById('gameOverScreen');
+
+    const cardInput = document.getElementById('cardInput');
+    const startBtn = document.getElementById('startBtn');
+    const restartBtn = document.getElementById('restartBtn');
+
+    const targetWordEl = document.getElementById('targetWord');
+    const tabooListEl = document.getElementById('tabooList');
+    const scoreValueEl = document.getElementById('scoreValue');
+    const timeRemainingEl = document.getElementById('timeRemaining');
+    const finalScoreEl = document.getElementById('finalScore');
+
+    const correctBtn = document.getElementById('correctBtn');
+    const tabooBtn = document.getElementById('tabooBtn');
+    const passBtn = document.getElementById('passBtn');
+
+    // Parse textarea input into array of objects [{word, clues: []}]
+    function parseInput() {
+      const text = cardInput.value.trim();
+      if (!text) return [];
+
+      return text
+        .split('\n')
+        .filter(line => line.includes(':'))
+        .map(line => {
+          const [word, cluesString] = line.split(':');
+          const clues = cluesString
+            ? cluesString.split(',').map(c => c.trim()).filter(Boolean)
+            : [];
+          return { word: word.trim(), clues };
+        });
+    }
+
+    // Shuffle cards array
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+
+    // Display current card
+    function renderCard() {
+      if (currentCardIndex >= cards.length) {
+        endGame();
+        return;
+      }
+
+      const card = cards[currentCardIndex];
+      targetWordEl.textContent = card.word;
+      
+      tabooListEl.innerHTML = '';
+      card.clues.forEach(clue => {
+        const li = document.createElement('li');
+        li.textContent = clue;
+        tabooListEl.appendChild(li);
+      });
+    }
+
+    // Start Game
+    function startGame() {
+      cards = parseInput();
+      
+      if (cards.length === 0) {
+        alert('Please enter at least one valid word line (e.g., Word: clue1, clue2)');
+        return;
+      }
+
+      shuffle(cards);
+      currentCardIndex = 0;
+      score = 0;
+      timeLeft = 60;
+
+      scoreValueEl.textContent = score;
+      timeRemainingEl.textContent = timeLeft;
+
+      setupScreen.classList.add('hidden');
+      gameOverScreen.classList.add('hidden');
+      gameScreen.classList.remove('hidden');
+
+      renderCard();
+
+      // Start countdown timer
+      timer = setInterval(() => {
+        timeLeft--;
+        timeRemainingEl.textContent = timeLeft;
+
+        if (timeLeft <= 0) {
+          endGame();
+        }
+      }, 1000);
+    }
+
+    // Next Card Logic
+    function nextCard() {
+      currentCardIndex++;
+      renderCard();
+    }
+
+    // End Game
+    function endGame() {
+      clearInterval(timer);
+      finalScoreEl.textContent = score;
+      gameScreen.classList.add('hidden');
+      gameOverScreen.classList.remove('hidden');
+    }
+
+    // Event Listeners
+    startBtn.addEventListener('click', startGame);
+    restartBtn.addEventListener('click', () => {
+      gameOverScreen.classList.add('hidden');
+      setupScreen.classList.remove('hidden');
+    });
+
+    correctBtn.addEventListener('click', () => {
+      score++;
+      scoreValueEl.textContent = score;
+      nextCard();
+    });
+
+    tabooBtn.addEventListener('click', () => {
+      score--;
+      scoreValueEl.textContent = score;
+      nextCard();
+    });
+
+    passBtn.addEventListener('click', () => {
+      nextCard();
+    });
+  </script>
+</body>
+</html>
