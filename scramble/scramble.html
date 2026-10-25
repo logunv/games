@@ -76,6 +76,9 @@
 			font-size: 20px;
             transition: all 0.2s;
         }
+		.show {
+			display:none;
+		}
 
         .level-btn.active, .level-btn:hover {
             background: var(--primary);
@@ -170,6 +173,16 @@
 		.correct { color: var(--correct); }
 		.answer { color: var(--answer);}
         .wrong { color: var(--wrong); }
+		.word-list {
+			display: flex;
+			flex-direction: column;
+			gap: 5px;
+			margin-bottom:20px;
+		}
+		#word-list {
+			height:100px;
+		}
+		
     </style>
 </head>
 <body>
@@ -179,6 +192,16 @@
 </header>
 
 <div class="game-container">
+	<div class="word-list" id="div-word">
+	    <label for="word-list">Enter your own words or use the preloaded words:</label>
+	    <textarea id="word-list"></textarea>
+	</div>
+	<div class="level-selector">
+	    <button class="level-btn" onclick="uploadList()" id=upload>Upload Words</button>
+		<button class="level-btn" onclick="hide()" id=hide>Hide Words</button>
+		<button class="level-btn show" onclick="show()" id=show>Show Words</button>
+	</div>
+	
     <div class="level-selector">
         <button class="level-btn active" onclick="setLevel('beginner')">ஆரம்பநிலை</button>
         <button class="level-btn" onclick="setLevel('intermediate')">இடைநிலை</button>
@@ -277,6 +300,37 @@
     let score = 0;
     let streak = 0;
     let selectedLetters = [];
+
+	function uploadList() {
+	    const rawWords = document.getElementById('word-list').value;
+		const textArea = document.getElementById('word-list');
+		const words = textArea.value
+		    .trim()
+		    .split(/[\s,]+/)
+		    .filter(Boolean);
+
+		wordBank[currentLevel] = words.map(word => ({
+		    word: word,
+		    hint: 'N/A'
+		  }));
+		  nextWord();
+		  showmsg(wordBank[currentLevel].length + ' words uploaded');
+	}
+	
+	// ('div-word', false, 'upload', 'show')
+	function hide() {
+		const myDiv = document.getElementById('div-word');
+		myDiv.style.display = 'none';
+		document.getElementById('upload').style.display = 'none';
+		document.getElementById('hide').style.display = 'none';
+		document.getElementById('show').style.display = 'block';
+	}
+	function show() {
+		document.getElementById('div-word').style.display = '';
+		document.getElementById('upload').style.display = '';
+		document.getElementById('hide').style.display = '';
+		document.getElementById('show').style.display = 'none';
+	}
 
     function splitTamilWord(word) {
         if (typeof Intl !== 'undefined' && Intl.Segmenter) {
@@ -386,7 +440,12 @@
 		  pool.splice(index, 1);
 		}
 	}
-	
+
+	function showmsg(msg) {
+		const answerArea = document.getElementById('message');
+		answerArea.className = 'message answer';
+		answerArea.innerHTML = msg;		
+	}	
 
 	function showAnswer() {
 		const answerArea = document.getElementById('message');
