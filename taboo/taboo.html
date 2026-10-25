@@ -321,9 +321,15 @@
 	</div>
 
 	<div class="game-container">
+		
 	  <div id="setupScreen" class="setup-section">
 	    <br/><br/>
-	    <button id="startBtn" class="btn-start">Start Game (60s)</button>
+		<div style="margin-bottom: 15px;">
+		  <label for="timeInput" style="font-weight: bold; margin-right: 8px;">Time Limit (seconds):</label>
+		  <input type="number" id="timeInput" value="60" min="5" max="300" style="width: 80px; padding: 6px; font-size: 16px; border-radius: 6px; border: 1px solid #ccc; text-align: center;">
+		</div>
+		
+	    <button id="startBtn" class="btn-start">Start Game</button>
 	  </div>
 
 	  <!-- Active Game Screen -->
@@ -459,7 +465,8 @@
 	  shuffle(cards);
 	  currentCardIndex = 0;
 	  score = 0;
-	  timeLeft = 60;
+	  // timeLeft = 60;
+	  timeLeft = document.getElementById('timeInput').value;
 
 	  scoreValueEl.textContent = score;
 	  timeRemainingEl.textContent = timeLeft;
