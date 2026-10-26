@@ -12,44 +12,52 @@
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+		:root {
+		    --primary: #8e24aa;
+		    --primary-dark: #6a1b9a;
+		    --secondary: #ffb300;
+		    --bg: #f5f3f7;
+		    --card: #ffffff;
+			--text: #333333;
+			--correct: #4caf50;
+			--answer: blue;
+		    --wrong: #f44336;
+		}
 
-        body {
-            font-family: 'Nunito', sans-serif;
-            background-color: #f0fdf4;
-            //background-image: radial-gradient(#e0f2fe 2px, transparent 2px), radial-gradient(#fbcfe8 2px, #f0fdf4 2px);
+		* {
+		    box-sizing: border-box;
+		    margin: 0;
+		    padding: 0;
+		}
+
+		body {
+		    //font-family: 'Segoe UI', cursive, Tahoma, Geneva, Verdana, sans-serif;
 			background-image: url('../background.jpg');
-            //background-size: 40px 40px;
-            background-position: 0 0, 20px 20px;
-            color: #334155;
-            min-height: 100vh;
-            padding: 2rem 1rem;
-        }
-
-        .header {
-            text-align: center;
-            max-w: 800px;
-            margin: 0 auto 2.5rem auto;
-        }
-
-        .header h1 {
-            font-family: 'Fredoka', cursive;
-            font-size: 2.8rem;
-            color: #ec4899;
-            text-shadow: 2px 2px 0px #fbcfe8;
-            margin-bottom: 0.5rem;
-        }
-
-        .header p {
-            font-size: 1.2rem;
-            color: #64748b;
-            font-weight: 700;
-        }
-
+		    background-color: var(--bg);
+		    color: var(--text);
+		    display: flex;
+		    flex-direction: column;
+		    align-items: center;
+		    min-height: 100vh;
+		    margin: 0;
+		    padding: 0;
+//          padding: 2rem 1rem;
+//			background-position: 0 0, 20px 20px;
+//			color: #334155;
+		}
+		/* Top Title Bar */
+		.top-bar {
+		    font-family: 'Segoe UI', cursive, Tahoma, Geneva, Verdana, sans-serif;
+		    width: 100%;
+			background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+		    color: #ffffff;
+		    text-align: center;
+		    padding: 10px 20px;
+		    font-size: 16px;
+		    // font-weight: bold;
+		    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+		    letter-spacing: 0.5px;
+		}
         .games-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -185,11 +193,12 @@
             align-items: center;
             gap: 0.4rem;
         }
-    </style>
+
+	</style>
 </head>
 <body>
 
-    <header class="header">
+    <header class="top-bar">
         <h1>TamilED Memory Games</h1>
     </header>
 	<center>

@@ -22,11 +22,24 @@
       color: var(--text-color);
       line-height: 1.6;
       margin: 0;
-      padding: 20px;
-      display: flex;
+      //padding: 20px;
+      //display: flex;
+		    align-items: center;
       justify-content: center;
 	  background-image: url('../background.jpg');	  
     }
+		.top-bar {
+		    font-family: 'Segoe UI', cursive, Tahoma, Geneva, Verdana, sans-serif;
+		    width: 100%;
+			background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+		    color: #ffffff;
+		    text-align: center;
+		    padding: 10px 20px;
+		    font-size: 20px;
+		    // font-weight: bold;
+		    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+		    letter-spacing: 0.5px;
+		}
 
     .instructions-card {
       background-color: var(--card-bg);
@@ -36,6 +49,7 @@
       max-width: 1024px;
       width: 100%;
       padding: 24px;
+      align:center;
     }
 
     h2 {
@@ -80,16 +94,17 @@
   </style>
 </head>
 <body>
+  <header class="top-bar">TamilED Fish Bowl Instructions</header>
+  <center>
 
   <div class="instructions-card">
-    <img src=banner.png width=1024 height=222></img>
     <h2>Instructions</h2>
 
-    <ol class="level-list">
-      <li>Beginner</li>
-      <li>Intermediate</li>
-      <li>Advanced</li>
-    </ol>
+    <div class="level-list">
+      <h3>1. Beginner
+      <h3>2. Intermediate
+      <h3>3. Advanced
+    </div>
 
     <div class="section-title">Facilitator</div>
     <div class="note-box">
@@ -99,10 +114,10 @@
     <p class="step-text">Ask a student to come to the front.</p>
 
     <div class="section-title">Player</div>
-    <ul class="player-list">
-      <li>Once it starts, click on <strong>Roll</strong>.</li>
-      <li>Give 3 clues to the class. If anyone guesses right, give that student a point. Otherwise, the player gets a point.</li>
-    </ul>
+    <div class="player-list">
+      <h3>Once it starts, click on <strong>Roll</strong>.</h3>
+      <h3>Give 3 clues to the class. If anyone guesses right, give that student a point. Otherwise, the player gets a point.</h3>
+    </div>
   </div>
 
 </body>
