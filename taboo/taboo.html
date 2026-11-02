@@ -313,7 +313,7 @@
 <div class="game-container">
 	<div class="word-list" id="div-word">
 	    <label for="cardInput">Enter the word list (format: word:word1,word2,word3)</label>
-		<textarea id="cardInput" >தமிழ்: பள்ளி, மொழி, படி &#10;புத்தகம்: படி, பாடம், தேர்வு &#10;</textarea>
+		<textarea id="cardInput" ></textarea>
 	</div>
 	<div class="level-selector">
 		<button class="level-btn" onclick="hide()" id=hide>Hide Words</button>
@@ -365,6 +365,16 @@
 </div>
 
 <script>
+    const wordlist = [
+		"தமிழ்: பள்ளி, மொழி, படி",
+		"புத்தகம்: படி, பாடம், தேர்வு",
+		"மழை: தண்ணீர், மேகம், குடை",
+		"பறவை: இறக்கை, கூடு, பறக்கும்",
+		"மரம்: இலை, கிளை, பழம்"
+	];
+
+	const textarea = document.getElementById('cardInput');
+	textarea.value = wordlist.join('\n');
 	
 	// ('div-word', false, 'upload', 'show')
 	function hide() {
